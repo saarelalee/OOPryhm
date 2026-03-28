@@ -3,6 +3,8 @@ public class MängulauaKontrollija {
     // Hetkel ainult proovimiseks
     public void main() {
         MängulauaKoostaja m = new MängulauaKoostaja(5,5);
+        // määrab, kas ka suured ja väikesed tähed on segamini
+        // m.raskemTase();
         char[][] maatriks = m.koosta();
         System.out.println(kasSobib(maatriks));
         System.out.println("---");
