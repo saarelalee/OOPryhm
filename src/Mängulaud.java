@@ -6,28 +6,31 @@ import java.util.Scanner;
  */
 public class Mängulaud {
     private char[][] algneMängulaud;
-    private int pikkus = algneMängulaud.length;
-    private int laius = algneMängulaud[0].length;
-    private int[][] jooksevMängulaud = new int[pikkus][laius];
+    private int pikkus;
+    private int laius;
+    private int[][] jooksevMängulaud;
 
     public Mängulaud(char[][] mängulaud) {
         this.algneMängulaud = mängulaud;
+        this.pikkus =algneMängulaud.length;
+        this.laius = algneMängulaud[0].length;
+        this.jooksevMängulaud = new int[pikkus][laius];
     }
 
     public void kuvaMängulaud(){
+        System.out.println("MÄNGULAUD");
         for (int i = 0; i < pikkus; i++) {
             String rida = "";
             for (int j = 0; j < laius; j++) {
                 if(jooksevMängulaud[i][j] == 0) rida+="#";
-                else if(jooksevMängulaud[i][j]== 1) rida+=" ";
+                else if(jooksevMängulaud[i][j]== 1) rida+="_";
             }
             System.out.println(rida);
         }
     }
 
-    public int[][] sisestaKoordinaadid(){
+    public int[][] sisestaKoordinaadid(Scanner s){
         //kasutajalt koordinaartide küsimine ja nende kontrollimine
-        Scanner s = new Scanner(System.in);
         KoordinaadiKontrollija kontrollija = new KoordinaadiKontrollija(pikkus,laius);
         int[][] koordinaadid = new int[2][2];
         for (int i = 1; i < 3; i++) {
@@ -41,11 +44,10 @@ public class Mängulaud {
                 v = Integer.parseInt(sisestatudKoordinaadid[1]);
                 sobib = kontrollija.kontrolli(r,v);
             }
-            koordinaadid[i][0] = r;
-            koordinaadid[i][1] = v;
+            koordinaadid[i-1][0] = r;
+            koordinaadid[i-1][1] = v;
 
         }
-        s.close();
         return koordinaadid;
     }
 
@@ -83,7 +85,6 @@ public class Mängulaud {
 
     public void muudaKuvatavLaud(int reakoordinaat, int veerukoordinaat){
         jooksevMängulaud[reakoordinaat][veerukoordinaat] = 1;
-
     }
 
 }

@@ -9,11 +9,10 @@ public class KoordinaadiKontrollija{
 
 
     public boolean kontrolli(int reaKoordinaat, int veeruKoordinaat){
-        if(reaKoordinaat>maatriksiPikkus || veeruKoordinaat>maatriksiLaius) {
+        if(reaKoordinaat>=maatriksiPikkus || veeruKoordinaat>=maatriksiLaius) {
             System.out.println("Sisestatud koordinaadid on maatriksi piiridest väjas!");
             return false;
-        }
-        else return true;
+        } else return true;
 
     }
 }

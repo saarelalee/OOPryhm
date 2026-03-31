@@ -21,40 +21,41 @@ public class Peaklass {
         int laius = 1;
         MängulauaKontrollija kontrollija = new MängulauaKontrollija();
 
+        Scanner s = new Scanner(System.in);
         while (!kontrollija.kasSobib(pikkus, laius)){
             System.out.println("Mängulaua mõõtmed peab sisestama nii, et mängulaual oleks paaris arv elemente");
-            Scanner s = new Scanner(System.in);
             System.out.println("Sisesta mängulaua pikkus.");
             pikkus = s.nextInt();
             System.out.println("Sisesta mängulaua laius.");
             laius = s.nextInt();
-            s.close();
+
         }
+
         //luuakse vastava suurusega mängulaud
         MängulauaKoostaja mängulauaKoostaja = new MängulauaKoostaja(pikkus,laius);
         //kasutaja otsustab mängu raskusastme
         boolean kasutajaPoleVastanud = true;
         while(kasutajaPoleVastanud){
-            Scanner s = new Scanner(System.in);
-            System.out.println("Kas soovid mängida raskemal tasemel? (jah/ei)");
+            s.nextLine();
+            System.out.println("Kas soovid mängida raskemal tasemel? (jah/ei) ");
             String sisend = s.nextLine();
-
             if(sisend.equals("jah")) {
                 mängulauaKoostaja.raskemTase();
                 kasutajaPoleVastanud = false;
             } else if (!sisend.equals("ei")) {
                 System.out.println("Palun sisestage korrektne vastus.");
-            }
-            s.close();
+            } else kasutajaPoleVastanud = false;
         }
+
 
         //Mängu põhiosa
         // mängitakse seni kuni kasutaja sisestab lõpumärguande või kui leitakse kõik sümbolite paarid
         boolean mängKäib = true;
-        Mängulaud mängulaud = new Mängulaud(mängulauaKoostaja.koosta());
+        char[][] laud = mängulauaKoostaja.koosta();
+        Mängulaud mängulaud = new Mängulaud(laud);
         while (mängKäib){
             mängulaud.kuvaMängulaud();
-            int[][] elementideKoordinaadid = mängulaud.sisestaKoordinaadid();
+            int[][] elementideKoordinaadid = mängulaud.sisestaKoordinaadid(s);
             mängulaud.kuvaElemendid(elementideKoordinaadid);
             if(mängulaud.kasElemendidSamad(elementideKoordinaadid)){
                 System.out.println("Leidsid paari!");
@@ -64,6 +65,7 @@ public class Peaklass {
 
 
         }
+        s.close();
 
 
 
