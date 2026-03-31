@@ -76,7 +76,7 @@ public class Peaklass {
                 System.out.println("Leidsid paari!");
                 tulemuseLuger.leitudPaar();
                 if (tulemuseLuger.getÕigeidPaare() == pikkus*laius/2) {
-                    System.out.println("Kõik paarid on leitud!");
+                    System.out.println("Kõik paarid on edukalt leitud!");
                     mängKäib = false;
                     break;
                 }
