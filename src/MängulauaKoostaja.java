@@ -14,6 +14,7 @@ public class MängulauaKoostaja {
     public MängulauaKoostaja(int pikkus, int laius) {
         this.pikkus = pikkus;
         this.laius = laius;
+
     }
 
     // Koostab sümbolmaatriksi etteantud isendiväljadega ning tagastab selle
