@@ -39,7 +39,13 @@ public class Mängulaud {
             int v = 0;
             while (!sobib) {
                 System.out.println("Sisesta elemendi "+ i+ " koordinaadid: (rida veerg)");
-                String[] sisestatudKoordinaadid = s.nextLine().split(" ");
+
+                String sisend = s.nextLine();
+
+                // n.ö "sentinel" väärtus, mis tähistab mängu lõpusoovi
+                if (sisend.equals("lõpp")) return new int[][]{{-1}};
+
+                String[] sisestatudKoordinaadid = sisend.split(" ");
                 r = Integer.parseInt(sisestatudKoordinaadid[0]);
                 v = Integer.parseInt(sisestatudKoordinaadid[1]);
                 sobib = kontrollija.kontrolli(r,v);
@@ -86,5 +92,4 @@ public class Mängulaud {
     public void muudaKuvatavLaud(int reakoordinaat, int veerukoordinaat){
         jooksevMängulaud[reakoordinaat][veerukoordinaat] = 1;
     }
-
 }
