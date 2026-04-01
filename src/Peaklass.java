@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Peaklass {
@@ -21,9 +22,13 @@ public class Peaklass {
         int laius = 1;
         MängulauaKontrollija kontrollija = new MängulauaKontrollija();
 
+        // Salvestab tulemused
+        Tulemused tulemuseLuger = new Tulemused();
+
         Scanner s = new Scanner(System.in);
         while (!kontrollija.kasSobib(pikkus, laius)){
             System.out.println("Mängulaua mõõtmed peab sisestama nii, et mängulaual oleks paaris arv elemente");
+            // Sisestades pikkuse koha peal näiteks 2 3 võtab programm pikkus=2 ja laius=3 kohe
             System.out.println("Sisesta mängulaua pikkus.");
             pikkus = s.nextInt();
             System.out.println("Sisesta mängulaua laius.");
@@ -51,23 +56,43 @@ public class Peaklass {
         //Mängu põhiosa
         // mängitakse seni kuni kasutaja sisestab lõpumärguande või kui leitakse kõik sümbolite paarid
         boolean mängKäib = true;
+        // Alustab ajaarvestust
+        long algus = System.nanoTime();
         char[][] laud = mängulauaKoostaja.koosta();
         Mängulaud mängulaud = new Mängulaud(laud);
         while (mängKäib){
             mängulaud.kuvaMängulaud();
             int[][] elementideKoordinaadid = mängulaud.sisestaKoordinaadid(s);
+
+            // Kui tagastatud maatriks on pikkusega 1x1 ning sisaldab ainult väärtust -1
+            // ehk kasutaja kirutas "lõpp"
+            if (elementideKoordinaadid[0][0] == -1) {
+                System.out.println("Kasutaja lõpetas mängu");
+                break;
+            }
+
             mängulaud.kuvaElemendid(elementideKoordinaadid);
             if(mängulaud.kasElemendidSamad(elementideKoordinaadid)){
                 System.out.println("Leidsid paari!");
+                tulemuseLuger.leitudPaar();
+                if (tulemuseLuger.getÕigeidPaare() == pikkus*laius/2) {
+                    System.out.println("Kõik paarid on edukalt leitud!");
+                    mängKäib = false;
+                    break;
+                }
             }else{
                 System.out.println("Proovi uuesti!");
             }
 
 
         }
+        // Võtab lõpuhetke ja arvutab kestnud aja
+        long lõpp = System.nanoTime();
+        long kestus = lõpp - algus;
+
         s.close();
 
-
+        tulemuseLuger.väljastaTulemus(kestus, laud, mängKäib);
 
     }
 }
