@@ -49,6 +49,11 @@ public class Mängulaud {
                 String[] sisestatudKoordinaadid = sisend.split(" ");
                 r = Integer.parseInt(sisestatudKoordinaadid[0]);
                 v = Integer.parseInt(sisestatudKoordinaadid[1]);
+
+                if (i == 2 && r == koordinaadid[0][0] && v == koordinaadid[0][1]) {
+                    System.out.println("Ei saa sama elementi kaks korda valida!");
+                    continue;
+                }
                 sobib = kontrollija.kontrolli(r,v);
             }
             koordinaadid[i-1][0] = r;
