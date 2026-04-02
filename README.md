@@ -56,4 +56,8 @@ Maarek: Githubi üles seadmine ja failistruktuur, klassid MängulauaKontrollija,
 **Murekohad**
 Giti kasutamine.
 
+**Hinnang**
+Arvame, et töö läks üldiselt hästi. Mäng toimib sujuvalt ning struktuur pole väga keeruline. Mõnes kohas võib veel erindeid tekkida, kui kasutaja ei sisesta korrektseid andmeid. Kuna juhendis oli kirjas, et võime eeldada korrektseid sisendeid, siis ei pandud sellele täielikku rõhku. Muidu võiks erinevaid sisendeid rangemalt kontrollida ning kuvada kasutajale ekraanil, mis täpselt valesti läks.
 
+**Testimine**
+Näiteks tegime ajutise koodi, mis loob mänguvälja ja täidab selle ainult samade sümbolitega. Nii oli kiirem kontrollida erinevaid funktsioone, mis olid seotud sarnasuse kontrolliga. Lisaks sai alati luua näiteks 2x2 mõõdus mänguvälja, mida on lihtsam kiiresti kontrollida. 
