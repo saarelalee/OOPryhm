@@ -9,12 +9,14 @@ public class Mängulaud {
     private int pikkus;
     private int laius;
     private int[][] jooksevMängulaud;
+    private KoordinaadiKontrollija kontrollija;
 
     public Mängulaud(char[][] mängulaud) {
         this.algneMängulaud = mängulaud;
         this.pikkus =algneMängulaud.length;
         this.laius = algneMängulaud[0].length;
         this.jooksevMängulaud = new int[pikkus][laius];
+        this.kontrollija = new KoordinaadiKontrollija(pikkus,laius);
     }
 
     public void kuvaMängulaud(){
@@ -31,7 +33,6 @@ public class Mängulaud {
 
     public int[][] sisestaKoordinaadid(Scanner s){
         //kasutajalt koordinaartide küsimine ja nende kontrollimine
-        KoordinaadiKontrollija kontrollija = new KoordinaadiKontrollija(pikkus,laius);
         int[][] koordinaadid = new int[2][2];
         for (int i = 1; i < 3; i++) {
             boolean sobib = false;
@@ -48,6 +49,11 @@ public class Mängulaud {
                 String[] sisestatudKoordinaadid = sisend.split(" ");
                 r = Integer.parseInt(sisestatudKoordinaadid[0]);
                 v = Integer.parseInt(sisestatudKoordinaadid[1]);
+
+                if (i == 2 && r == koordinaadid[0][0] && v == koordinaadid[0][1]) {
+                    System.out.println("Ei saa sama elementi kaks korda valida!");
+                    continue;
+                }
                 sobib = kontrollija.kontrolli(r,v);
             }
             koordinaadid[i-1][0] = r;
@@ -84,6 +90,7 @@ public class Mängulaud {
         if(algneMängulaud[r1][v1] == algneMängulaud[r2][v2]) {
             muudaKuvatavLaud(r1,v1);
             muudaKuvatavLaud(r2,v2);
+            kontrollija.märgiLeitud(koordinaadid);
             return true;
         }
         else return false;
