@@ -1,8 +1,8 @@
 import java.util.Arrays;
 import java.util.Scanner;
 
-/**
- *
+/** Haldab mängu põhiosa tegevust
+ * @author Lee Saarela
  */
 public class Mängulaud {
     private char[][] algneMängulaud;

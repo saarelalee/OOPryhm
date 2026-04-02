@@ -8,7 +8,7 @@ public class Peaklass {
         System.out.println("Memoriin.\n" +
                 "Leia mängulaualt võimalikult kiiresti sümbolite paarid.\n" +
                 "Mäng lõppeb, kui kõik paarid on leitud " +
-                "või \"lp\" sisestamisel.\n" +
+                "või \"lõpp\" sisestamisel.\n" +
                 "Pane tähele! Mängulaual laiusega m " +
                 "ja pikkusega n arvestatakse " +
                 "elementide koordinaate järgnevalt:\n" +
@@ -65,12 +65,12 @@ public class Peaklass {
             int[][] elementideKoordinaadid = mängulaud.sisestaKoordinaadid(s);
 
             // Kui tagastatud maatriks on pikkusega 1x1 ning sisaldab ainult väärtust -1
-            // ehk kasutaja kirutas "lõpp"
+            // ehk kasutaja kirjutas "lõpp"
             if (elementideKoordinaadid[0][0] == -1) {
                 System.out.println("Kasutaja lõpetas mängu");
                 break;
             }
-
+            //kasutajale kuvatakse soovitud elemendid
             mängulaud.kuvaElemendid(elementideKoordinaadid);
             if(mängulaud.kasElemendidSamad(elementideKoordinaadid)){
                 System.out.println("Leidsid paari!");
