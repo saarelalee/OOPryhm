@@ -26,31 +26,30 @@ sssss
 sssss  
 
 Kuni kasutaja ei ole leidnud üles kõiki paare või sisestanud lõpumärguannet, korratakse järgnevaid tegevusi ja logitakse neid klassis Tulemused:  
-Kuvatakse kasutajale “#” moodustatud mängulaua hetkeseis ning lastakse sisestada elementide koordinaadid, mille väärtusi kasutaja soovib näha. Samuti salvestatakse klassi Tulemused mängu algusaeg.  
- 
-Kasuja sisestatud koordinaatide relevantsust kontrollitakse klassis KoordinaadiKontrollija ehk kas sisestatud koordinaatidega element on mängulaua mõõtmetes, kas see on veel mängulaual alles ja ega kaks korda ei sisestatud sama elemendi koordinaate.  
-Kuvatakse kasutajale mängulaud, kus soovitud koordinaatidel olevaid elementide väärtusi on näha.  
-Kui kasutaja leidis kaks samasugust elementi, asendatakse need kuvatavas maatriksis tühikutega ning salvestatakse mängulaua hetkeseis.  
-Vastasel juhul midagi ei muutu ja tegevust korratakse.  
+1. Kuvatakse kasutajale “#”-märkidest moodustatud mängulaua hetkeseis ning palutakse sisestada elementide koordinaadid, mille väärtusi kasutaja soovib näha. Samuti salvestatakse esimesel korral klassi Tulemused mängu algusaeg.
+2. Kasuja sisestatud koordinaatide korrektsust kontrollitakse klassis KoordinaadiKontrollija ehk kas sisestatud koordinaatidega element on mängulaua mõõtmetes, kas see on veel mängulaual alles ja ega sama elemendi koordinaate ei sisaldatud topelt.
+3. Kuvatakse kasutajale mängulaud, kus soovitud koordinaatidel olevaid elementide väärtusi on näha.  
+Kui kasutaja leidis kaks samasugust elementi, asendatakse need kuvatavas maatriksis alakriipsudega ning salvestatakse mängulaua hetkeseis. Vastasel juhul mängulauda ei muudeta ja tegevust korratakse.
 
+**Klasside jaotus**
 1. Peaklass - mängu põhiosa
 2. MängulauaKoostaja - genereerib mängu alguses mänguvälja ja sinna suvalised tähed
 3. MängulauaKontrollija - kontrollib, kas sisestatud mängulaual on paaris arv elemente
 4. MängulauaMuutja - salvestab mängu seisu ja kuvab tulemuse kasutajale
-5. KoordinaadiKontrollija - kontrollib kas sisestatud koordinaadid on antud mängu seisus relevantsed
+5. KoordinaadiKontrollija - kontrollib, kas sisestatud koordinaadid on antud mängu seisus relevantsed
 6. Tulemused - salvestab tulemused nii, et need saaks mängu lõpus väljastada
 
 
 **Töö protsess**
-1. Idee välja mõtlemine
+1. Idee välja töötamine
 2. Ülesannete jaotamine
-3. Projekti kirjelduse kirjutamine
+3. Projekti kirjelduse koostamine
 4. Klasside programmeerimine
-5. Vigadeparandus
+5. Testimine ja silumine
 
 **Rühmaliikmete panused**
 
-Lee: Projektikirjelduse kirjutaine, klassid Peaklass, Mängulaud ja KoordinaadiKontrollija (see osa, mis kontrollib, et sisestatud koordinaadid oleksid maatriksi mõõtmetes)
+Lee: Projektikirjelduse kirjutaine, klassid Peaklass, Mängulaud ja KoordinaadiKontrollija (maatriksi piiride kontroll)
 
 Maarek: Githubi üles seadmine ja failistruktuur, klassid MängulauaKontrollija, Tulemused, MängulauaKoostaja ja ülejäänud osa KoordinaadiKontrollijast.
 
