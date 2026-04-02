@@ -9,12 +9,14 @@ public class Mängulaud {
     private int pikkus;
     private int laius;
     private int[][] jooksevMängulaud;
+    private KoordinaadiKontrollija kontrollija;
 
     public Mängulaud(char[][] mängulaud) {
         this.algneMängulaud = mängulaud;
         this.pikkus =algneMängulaud.length;
         this.laius = algneMängulaud[0].length;
         this.jooksevMängulaud = new int[pikkus][laius];
+        this.kontrollija = new KoordinaadiKontrollija(pikkus,laius);
     }
 
     public void kuvaMängulaud(){
@@ -31,7 +33,6 @@ public class Mängulaud {
 
     public int[][] sisestaKoordinaadid(Scanner s){
         //kasutajalt koordinaartide küsimine ja nende kontrollimine
-        KoordinaadiKontrollija kontrollija = new KoordinaadiKontrollija(pikkus,laius);
         int[][] koordinaadid = new int[2][2];
         for (int i = 1; i < 3; i++) {
             boolean sobib = false;
@@ -84,6 +85,7 @@ public class Mängulaud {
         if(algneMängulaud[r1][v1] == algneMängulaud[r2][v2]) {
             muudaKuvatavLaud(r1,v1);
             muudaKuvatavLaud(r2,v2);
+            kontrollija.märgiLeitud(koordinaadid);
             return true;
         }
         else return false;
