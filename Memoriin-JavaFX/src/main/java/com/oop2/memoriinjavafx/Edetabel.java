@@ -10,6 +10,7 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
@@ -103,6 +104,12 @@ public class Edetabel {
         VBox üleval = new VBox();
         üleval.getChildren().add(pealkiri);
 
+        ToggleButton valmis = new ToggleButton("Valmis");
+        VBox all = new VBox();
+        all.setAlignment(Pos.CENTER);
+        all.setPadding(new Insets(20));
+        all.getChildren().add(valmis);
+
         vb.getChildren().add(gp);
         vb.setAlignment(Pos.CENTER);
         vb.setSpacing(10);
@@ -116,7 +123,8 @@ public class Edetabel {
 
 
 
-
+        bp.setBottom(all);
+        BorderPane.setAlignment(valmis,Pos.BOTTOM_CENTER);
 
         Scene scene = new Scene(bp, laius, kõrgus);
         Stage stage = new Stage();
@@ -124,6 +132,13 @@ public class Edetabel {
         stage.setScene(scene);
         stage.setMaxHeight(ekraaniKõrgus);
         stage.setMaxWidth(ekraaniLaius);
+
+        valmis.setOnMousePressed(e -> {
+            System.out.println("valmis");
+            valmis.setDisable(true);
+            stage.close();
+        });
+
         stage.show();
     }
 

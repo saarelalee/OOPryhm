@@ -9,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
@@ -55,11 +56,19 @@ public class Avaaken {
         VBox üleval = new VBox();
         üleval.getChildren().add(pealkiri);
 
+        ToggleButton juhend = new ToggleButton("Juhend");
         ToggleButton alusta = new ToggleButton("Alusta");
-        VBox all = new VBox();
+        ToggleButton sulge = new ToggleButton("Sulge");
+        HBox all = new HBox();
         all.setAlignment(Pos.CENTER);
         all.setPadding(new Insets(20));
-        all.getChildren().add(alusta);
+        all.setSpacing(20);
+        all.getChildren().addAll(juhend,alusta,sulge);
+
+        juhend.setOnMousePressed(e -> {
+            Õpetus juhendAken = new Õpetus();
+            juhendAken.start();
+        });
 
         alusta.setOnMousePressed(e -> {
             String nimiSõne = nimi.getText().trim();
@@ -87,11 +96,11 @@ public class Avaaken {
             MängulauaKontrollija kontrollija = new MängulauaKontrollija();
 
             if (!sisendiKontroll(lauaPikkusSõne) || !sisendiKontroll(lauaLaiusSõne)) {
-                String viga = "Palun sisesta korreksted täisarvulised mõõdud enne mängu alustamist.";
+                String viga = "Palun sisesta korreksted täisarvulised mõõdud.";
                 vead.add(viga);
             } else {
                 if (!kontrollija.kasSobib(Integer.parseInt(lauaPikkusSõne),Integer.parseInt(lauaLaiusSõne))) {
-                    String viga = "Palun sisesta korreksted täisarvulised mõõdud enne mängu alustamist.";
+                    String viga = "Mängulaua mõõtmed peab sisestama nii, et mängulaual oleks paaris arv elemente.";
                     vead.add(viga);
                 }
             }
@@ -102,6 +111,7 @@ public class Avaaken {
                 nimi.setEditable(false);
                 lauaLaius.setEditable(false);
                 lauaPikkus.setEditable(false);
+                sulge.setDisable(true);
 
                 // Alustab mänguga, hetkel puudub, saab kas luua
                 System.out.println("ALGUS");
@@ -131,6 +141,13 @@ public class Avaaken {
         stage.setTitle("Memoriin");
         stage.setScene(scene);
         stage.setResizable(false);
+
+        sulge.setOnMousePressed(e -> {
+            System.out.println("sulgemine");
+            sulge.setDisable(true);
+            stage.close();
+        });
+
         stage.show();
     }
 

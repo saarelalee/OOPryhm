@@ -44,16 +44,6 @@ public class Tulemused {
             }
         }
         kirjutaTulemus();
-
-        Platform.startup(() -> {
-            // Vajalik lõimel jooksutamiseks
-            Edetabel ed = new Edetabel();
-            try {
-                ed.start();
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
-            }
-        });
     }
 
     public void kirjutaTulemus() throws IOException {
