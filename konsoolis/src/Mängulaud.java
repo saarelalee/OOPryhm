@@ -1,4 +1,3 @@
-import java.util.Arrays;
 import java.util.Scanner;
 
 /** Haldab mängu põhiosa tegevust
