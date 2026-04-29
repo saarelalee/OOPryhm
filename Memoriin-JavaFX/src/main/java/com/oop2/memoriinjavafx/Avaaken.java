@@ -70,6 +70,8 @@ public class Avaaken {
             juhendAken.start();
         });
 
+        // Kontrollib kõik kasutaja sisendid läbi ning viskab vigade korral veateatega akna
+        // Kui kõik on korras, delegeerib programm edasise töö järgmisele
         alusta.setOnMousePressed(e -> {
             String nimiSõne = nimi.getText().trim();
             String lauaLaiusSõne = lauaLaius.getText().trim();
@@ -151,6 +153,8 @@ public class Avaaken {
         stage.show();
     }
 
+    // Kui sisendiks on sobilik arv, tagastab true, muidu tagastab false ja seeläbi
+    // ei saa kasutaja edasi minna nii kaua, kuni sisestatud on korrektsed andmed
     static boolean sisendiKontroll(String sisend) {
         try {
             Integer.parseInt(sisend);

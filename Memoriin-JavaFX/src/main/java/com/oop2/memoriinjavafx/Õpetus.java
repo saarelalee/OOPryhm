@@ -21,7 +21,7 @@ public class Õpetus {
         Label tekst = new Label("Memoriin.\n" +
                 "Leia mängulaualt võimalikult kiiresti sümbolite paarid.\n" +
                 "Mäng lõppeb, kui kõik paarid on leitud " +
-                "või \"lõpp\" sisestamisel.\n" +
+                "või nupu \"sulge\" vajutamisel.\n" +
                 "Pane tähele! Mängulaual laiusega m " +
                 "ja pikkusega n arvestatakse " +
                 "elementide koordinaate järgnevalt:\n" +
@@ -50,7 +50,7 @@ public class Õpetus {
 
         Scene scene = new Scene(bp, 320,320);
         Stage stage = new Stage();
-        stage.setTitle("Edetabel");
+        stage.setTitle("Juhend");
         stage.setScene(scene);
 
         sulge.setOnMousePressed(e -> {
